@@ -14,16 +14,16 @@
                   http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--配置zookeeper的地址-->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
     <!--配置服务名字-->
-    <dubbo:application name="health_backend"></dubbo:application>
+    <dubbo:application name="health_backend"/>
 
     <!--引用服务：开启spring对@Reference-->
-    <dubbo:annotation package="com.qf.controller"></dubbo:annotation>
+    <dubbo:annotation package="com.qf.controller"/>
 
     <!--开启注解驱动：加载handlerMapping和handleradapter-->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven/>
 
     <!--上传解析器-->
     <bean id="multipartResolver"

@@ -20,9 +20,11 @@
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
         <property name="username" value="root" />
         <property name="password" value="root" />
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
         <property name="url"
-                  value="jdbc:mysql://localhost:3306/health?characterEncoding=utf-8"/>
+                  value="jdbc:mysql://localhost:3306/health?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC"/>
+        <property name="maxActive" value="50"/>
+        <property name="minIdle" value="5"/>
     </bean>
 
     <!--sqlsession工厂-->
