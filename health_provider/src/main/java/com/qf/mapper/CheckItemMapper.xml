@@ -6,4 +6,16 @@
 <insert id="add" parameterType="com.qf.pojo.CheckItem">
     INSERT INTO t_checkitem (code,name,sex,age,price,type,remark,attention) values (#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})
 </insert>
+
+    <select id="findPage" parameterType="com.qf.entity.QueryPageBean" resultType="com.qf.pojo.CheckItem">
+        SELECT * FROM t_checkitem
+        <if test="queryString!=null and queryString!=''">
+            WHERE code=#{queryString} OR name=#{queryString}
+        </if>
+        ORDER BY id DESC
+    </select>
+
+    <delete id="delete" parameterType="integer">
+        DELETE FROM t_checkitem WHERE id=#{id}
+    </delete>
 </mapper>

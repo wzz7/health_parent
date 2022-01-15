@@ -1,7 +1,11 @@
 package com.qf.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.qf.constant.MessageConstant;
+import com.qf.entity.PageResult;
+import com.qf.entity.QueryPageBean;
 import com.qf.entity.Result;
 import com.qf.pojo.CheckItem;
 import org.springframework.stereotype.Controller;
@@ -9,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.qf.service.CheckItemService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/checkitem")
@@ -29,7 +35,23 @@ public class CheckItemController {
             e.printStackTrace();
             return new Result(false, MessageConstant.ADD_CHECKITEM_FAIL);
         }
+    }
 
+    @RequestMapping("/findPage")
+    @ResponseBody
+    public PageResult findPage(@RequestBody QueryPageBean pageBean) {
+        return checkItemService.findPage(pageBean);
+    }
 
+    @RequestMapping("delete")
+    @ResponseBody
+    public Result delete(Integer id) {
+        try {
+            checkItemService.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, MessageConstant.DELETE_CHECKITEM_FAIL);
+        }
+        return new Result(true, MessageConstant.DELETE_CHECKITEM_SUCCESS);
     }
 }
