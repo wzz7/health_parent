@@ -26,8 +26,6 @@ public class CheckItemController {
     @RequestMapping("/add")
     @ResponseBody
     public Result add(@RequestBody CheckItem checkItem) {
-        System.out.println("##################");
-        System.out.println(checkItemService.getClass());
         try {
             checkItemService.add(checkItem);
             return new Result(true, MessageConstant.ADD_CHECKITEM_SUCCESS);
@@ -76,6 +74,18 @@ public class CheckItemController {
         } catch (Exception e) {
             e.printStackTrace();
             return new Result(false, MessageConstant.EDIT_CHECKITEM_FAIL);
+        }
+    }
+
+    @RequestMapping("/findAll")
+    @ResponseBody
+    public Result findAll() {
+        try {
+            List<CheckItem> checkItemList = checkItemService.findAll();
+            return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS, checkItemList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, MessageConstant.QUERY_CHECKITEM_FAIL);
         }
     }
 }

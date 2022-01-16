@@ -15,4 +15,6 @@ public interface CheckItemMapper {
     CheckItem findById(Integer id);
 
     void edit(CheckItem checkItem);
+
+    List<CheckItem> findAll();
 }
