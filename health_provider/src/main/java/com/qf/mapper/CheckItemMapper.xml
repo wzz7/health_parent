@@ -18,4 +18,39 @@
     <delete id="delete" parameterType="integer">
         DELETE FROM t_checkitem WHERE id=#{id}
     </delete>
+
+    <select id="findById" parameterType="integer" resultType="com.qf.pojo.CheckItem">
+        SELECT * FROM t_checkitem WHERE id=#{id}
+    </select>
+
+    <update id="edit" parameterType="com.qf.pojo.CheckItem">
+        UPDATE t_checkitem
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="attention != null">
+                attention = #{attention},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
 </mapper>

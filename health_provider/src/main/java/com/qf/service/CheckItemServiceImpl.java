@@ -37,4 +37,14 @@ public class CheckItemServiceImpl implements CheckItemService {
     public void delete(Integer id) {
         checkItemMapper.delete(id);
     }
+
+    @Override
+    public CheckItem findById(Integer id) {
+        return checkItemMapper.findById(id);
+    }
+
+    @Override
+    public void edit(CheckItem checkItem) {
+        checkItemMapper.edit(checkItem);
+    }
 }
